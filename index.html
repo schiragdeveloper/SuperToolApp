@@ -3,71 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A futuristic collection of real-time online utility tools with a unique neon-glow UI and professional SVG icons. Fully responsive and developed by Chirag Sathwara.">
-    <meta name="keywords" content="responsive tools, futuristic ui, online tools, age calculator, bmi calculator, qr generator, image compressor, chirag sathwara, svg icons">
+    <meta name="description" content="An all-in-one hub of futuristic, real-time utility tools with a stunning neon UI. Calculate age, BMI, EMI, generate QR codes, compress images, and more. Developed by Chirag Sathwara.">
+    <meta name="keywords" content="online tools, free tools, utility hub, age calculator, bmi calculator, qr generator, image compressor, emi calculator, gst calculator, chirag sathwara, futuristic ui, neon design">
     <meta name="author" content="Chirag Sathwara">
     <title>Futuristic Utility Hub | Developed by Chirag Sathwara</title>
 
-    <!-- External Libraries (QR Code, Image Compressor) -->
+    <!-- External Libraries (Must be loaded before your script) -->
     <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.2/dist/browser-image-compression.js"></script>
-    <!-- Library for 3D Tilt Effect -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
 
     <style>
-        /* ================================================================== */
-        /*          FINAL, RESPONSIVE & ANIMATED CSS STYLES START           */
-        /* ================================================================== */
-        :root {
-            --bg-color: #0a0a10;
-            --card-bg-color: #1a1a2e;
-            --text-color: #e0e0ff;
-            --subtext-color: #a0a0c0;
-            --accent-color: #00f7ff;
-            --glow-color: rgba(0, 247, 255, 0.5);
-            --border-glow: rgba(0, 247, 255, 0.3);
-            --secondary-accent: #f700ff;
-        }
-
+        /* All CSS from the previous correct version */
+        :root { --bg-color: #0a0a10; --card-bg-color: #1a1a2e; --text-color: #e0e0ff; --subtext-color: #a0a0c0; --accent-color: #00f7ff; --glow-color: rgba(0, 247, 255, 0.5); --border-glow: rgba(0, 247, 255, 0.3); --secondary-accent: #f700ff; }
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;600;700&display=swap');
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Rajdhani', sans-serif;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--bg-color); }
-        ::-webkit-scrollbar-thumb { background: var(--accent-color); border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #00c4cc; }
-
-        body {
-            background-color: var(--bg-color);
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(0, 247, 255, 0.1), transparent 30%),
-                radial-gradient(circle at 80% 90%, rgba(247, 0, 255, 0.1), transparent 30%);
-            color: var(--text-color);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            overflow-x: hidden;
-        }
-        
-        /* --- Animated Background --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Rajdhani', sans-serif; }
+        html { scroll-behavior: smooth; }
+        ::-webkit-scrollbar { width: 8px; } ::-webkit-scrollbar-track { background: var(--bg-color); } ::-webkit-scrollbar-thumb { background: var(--accent-color); border-radius: 10px; } ::-webkit-scrollbar-thumb:hover { background: #00c4cc; }
+        body { background-color: var(--bg-color); background-image: radial-gradient(circle at 10% 20%, rgba(0, 247, 255, 0.1), transparent 30%), radial-gradient(circle at 80% 90%, rgba(247, 0, 255, 0.1), transparent 30%); color: var(--text-color); display: flex; flex-direction: column; align-items: center; overflow-x: hidden; }
         .lines { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; }
         .lines .line { position: absolute; width: 1px; height: 100%; background: rgba(255, 255, 255, 0.05); }
-        .lines .line:nth-child(1) { left: 10%; } .lines .line:nth-child(2) { left: 20%; } .lines .line:nth-child(3) { left: 30%; }
-        .lines .line:nth-child(4) { left: 40%; } .lines .line:nth-child(5) { left: 50%; } .lines .line:nth-child(6) { left: 60%; }
-        .lines .line:nth-child(7) { left: 70%; } .lines .line:nth-child(8) { left: 80%; } .lines .line:nth-child(9) { left: 90%; }
-
-        /* --- Header / Top Bar --- */
+        .lines .line:nth-child(1) { left: 10%; } .lines .line:nth-child(2) { left: 20%; } .lines .line:nth-child(3) { left: 30%; } .lines .line:nth-child(4) { left: 40%; } .lines .line:nth-child(5) { left: 50%; } .lines .line:nth-child(6) { left: 60%; } .lines .line:nth-child(7) { left: 70%; } .lines .line:nth-child(8) { left: 80%; } .lines .line:nth-child(9) { left: 90%; }
         .top-bar { width: 100%; padding: 15px 5%; background: rgba(26, 26, 46, 0.8); backdrop-filter: blur(10px); display: flex; justify-content: space-between; align-items: center; position: fixed; top: 0; z-index: 1000; border-bottom: 1px solid var(--border-glow); }
         .logo-container { display: flex; align-items: center; gap: 15px; }
         .logo-container .logo svg { width: 30px; height: 30px; fill: var(--accent-color); filter: drop-shadow(0 0 5px var(--glow-color)); animation: pulse 2s infinite; }
@@ -76,13 +32,9 @@
         .controls-container { display: flex; align-items: center; gap: 20px; }
         .language-switcher button { background: none; border: 1px solid var(--border-glow); color: var(--text-color); padding: 8px 15px; border-radius: 20px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; }
         .language-switcher button.active { background-color: var(--accent-color); color: var(--bg-color); border-color: var(--accent-color); text-shadow: 0 0 5px var(--accent-color); }
-
-        /* --- Main Content --- */
         .main-container { margin-top: 120px; width: 100%; max-width: 1200px; padding: 20px; text-align: center; }
         .main-title { font-family: 'Orbitron', sans-serif; font-size: 3.5rem; font-weight: 900; margin-bottom: 15px; color: var(--text-color); text-shadow: 0 0 15px var(--glow-color); letter-spacing: 2px; }
         .main-subtitle { font-size: 1.2rem; margin-bottom: 50px; color: var(--subtext-color); font-weight: 600; }
-        
-        /* --- Tool Grid --- */
         .tool-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
         .tool-card { background: linear-gradient(145deg, #1e1e32, #141424); padding: 25px; border-radius: 15px; cursor: pointer; text-align: left; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: flex-start; gap: 15px; transform-style: preserve-3d; transform: perspective(1000px); transition: transform 0.1s ease; animation: fadeIn-stagger 0.5s ease-out forwards; opacity: 0; }
         @keyframes fadeIn-stagger { to { opacity: 1; transform: translateY(0); } }
@@ -93,7 +45,6 @@
         .tool-card .icon svg { width: 100%; height: 100%; fill: var(--accent-color); filter: drop-shadow(0 0 8px var(--glow-color)); }
         .tool-card h3 { font-size: 1.5rem; font-weight: 700; color: var(--text-color); line-height: 1.2; }
         .tool-card p { font-size: 1rem; color: var(--subtext-color); }
-        
         #tool-display-area { margin-top: 60px; padding: 40px; background: var(--card-bg-color); border-radius: 15px; border: 1px solid var(--border-glow); box-shadow: 0 0 30px rgba(0,0,0,0.5); display: none; text-align: left; }
         #tool-display-area h2 { font-family: 'Orbitron', sans-serif; font-size: 2.2rem; margin-bottom: 30px; color: var(--accent-color); text-align: center; text-shadow: 0 0 10px var(--glow-color); }
         .tool-content { display: flex; flex-direction: column; gap: 20px; }
@@ -128,45 +79,11 @@
     </style>
 </head>
 <body>
-    <div class="lines">
-        <div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
-    </div>
-    
-    <header class="top-bar">
-        <div class="logo-container">
-            <div class="logo">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14.7,2.3L9.3,2.3C8.6,2.3,8,2.9,8,3.7v1c0,0.8,0.6,1.4,1.4,1.4h3.4c0.8,0,1.4-0.6,1.4-1.4v-1C16.1,2.9,15.5,2.3,14.7,2.3z M19.4,6.3h-2.8c-0.8,0-1.4,0.6-1.4,1.4v2.8c0,0.8,0.6,1.4,1.4,1.4h2.8c0.8,0,1.4-0.6,1.4-1.4V7.7C20.8,6.9,20.2,6.3,19.4,6.3z M7.4,6.3H4.6C3.8,6.3,3.2,6.9,3.2,7.7v2.8c0,0.8,0.6,1.4,1.4,1.4h2.8c0.8,0,1.4-0.6,1.4-1.4V7.7C8.8,6.9,8.2,6.3,7.4,6.3z M14.7,13.2h-5c-0.8,0-1.4,0.6-1.4,1.4v5c0,0.8,0.6,1.4,1.4,1.4h5c0.8,0,1.4-0.6,1.4-1.4v-5C16.1,13.8,15.5,13.2,14.7,13.2z"/></svg>
-            </div>
-            <div class="dev-name" data-lang-key="dev_name"></div>
-        </div>
-        <div class="controls-container">
-             <div class="language-switcher">
-                <button id="lang-en">EN</button>
-                <button id="lang-gu">GU</button>
-            </div>
-        </div>
-    </header>
-
-    <main class="main-container">
-        <h1 class="main-title" data-lang-key="main_title"></h1>
-        <p class="main-subtitle" data-lang-key="main_subtitle"></p>
-        <div class="tool-grid" id="tool-grid"></div>
-        <div id="tool-display-area">
-            <h2 id="tool-title"></h2>
-            <div id="tool-content" class="tool-content"></div>
-        </div>
-    </main>
-
-    <footer>
-        <div class="footer-links">
-            <a href="#" class="modal-trigger" data-modal="about-modal" data-lang-key="footer_about"></a>
-            <a href="#" class="modal-trigger" data-modal="contact-modal" data-lang-key="footer_contact"></a>
-            <a href="#" class="modal-trigger" data-modal="privacy-modal" data-lang-key="footer_privacy"></a>
-            <a href="#" class="modal-trigger" data-modal="disclaimer-modal" data-lang-key="footer_disclaimer"></a>
-        </div>
-        <p class="copyright" data-lang-key="footer_copyright"></p>
-    </footer>
-    
+    <!-- HTML Structure -->
+    <div class="lines"> <div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div> </div>
+    <header class="top-bar"> <div class="logo-container"> <div class="logo"> <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14.7,2.3L9.3,2.3C8.6,2.3,8,2.9,8,3.7v1c0,0.8,0.6,1.4,1.4,1.4h3.4c0.8,0,1.4-0.6,1.4-1.4v-1C16.1,2.9,15.5,2.3,14.7,2.3z M19.4,6.3h-2.8c-0.8,0-1.4,0.6-1.4,1.4v2.8c0,0.8,0.6,1.4,1.4,1.4h2.8c0.8,0,1.4-0.6,1.4-1.4V7.7C20.8,6.9,20.2,6.3,19.4,6.3z M7.4,6.3H4.6C3.8,6.3,3.2,6.9,3.2,7.7v2.8c0,0.8,0.6,1.4,1.4,1.4h2.8c0.8,0,1.4-0.6,1.4-1.4V7.7C8.8,6.9,8.2,6.3,7.4,6.3z M14.7,13.2h-5c-0.8,0-1.4,0.6-1.4,1.4v5c0,0.8,0.6,1.4,1.4,1.4h5c0.8,0,1.4-0.6,1.4-1.4v-5C16.1,13.8,15.5,13.2,14.7,13.2z"/></svg> </div> <div class="dev-name" data-lang-key="dev_name"></div> </div> <div class="controls-container"> <div class="language-switcher"> <button id="lang-en"></button> <button id="lang-gu"></button> </div> </div> </header>
+    <main class="main-container"> <h1 class="main-title" data-lang-key="main_title"></h1> <p class="main-subtitle" data-lang-key="main_subtitle"></p> <div class="tool-grid" id="tool-grid"></div> <div id="tool-display-area"> <h2 id="tool-title"></h2> <div id="tool-content" class="tool-content"></div> </div> </main>
+    <footer> <div class="footer-links"> <a href="#" class="modal-trigger" data-modal="about-modal" data-lang-key="footer_about"></a> <a href="#" class="modal-trigger" data-modal="contact-modal" data-lang-key="footer_contact"></a> <a href="#" class="modal-trigger" data-modal="privacy-modal" data-lang-key="footer_privacy"></a> <a href="#" class="modal-trigger" data-modal="disclaimer-modal" data-lang-key="footer_disclaimer"></a> </div> <p class="copyright" data-lang-key="footer_copyright"></p> </footer>
     <div id="about-modal" class="modal"><div class="modal-content"><span class="close-button">×</span><h2 data-lang-key="about_title"></h2><p data-lang-key="about_p1"></p><p data-lang-key="about_p2"></p></div></div>
     <div id="contact-modal" class="modal"><div class="modal-content"><span class="close-button">×</span><h2 data-lang-key="contact_title"></h2><p data-lang-key="contact_p1"></p><p><strong>Email:</strong> <a href="mailto:aichiragbusinessid@gmail.com">aichiragbusinessid@gmail.com</a></p></div></div>
     <div id="privacy-modal" class="modal"><div class="modal-content"><span class="close-button">×</span><h2 data-lang-key="privacy_title"></h2><p data-lang-key="privacy_p1"></p><p data-lang-key="privacy_p2"></p></div></div>
@@ -179,35 +96,135 @@
     document.addEventListener('DOMContentLoaded', () => {
         const translations = {
             en: {
+                lang_en_btn: "EN", lang_gu_btn: "GU",
                 dev_name: "Developed by Chirag Sathwara", main_title: "Futuristic Utility Hub", main_subtitle: "Next-Generation Tools for Modern Problems.",
                 footer_about: "About", footer_contact: "Contact", footer_privacy: "Privacy", footer_disclaimer: "Disclaimer",
                 footer_copyright: "© 2024 Utility Hub. All Rights Reserved by Chirag Sathwara.",
-                about_title: "About The Hub", about_p1: "Welcome to the Futuristic Utility Hub, a visionary project by Chirag Sathwara. Our mission is to merge cutting-edge design with practical, real-time tools, providing an experience that is both functional and visually stunning.", about_p2: "Every tool on this platform is crafted with precision, ensuring accuracy, speed, and accessibility. This hub is a demonstration of what's possible when modern web technologies meet a passion for innovation and user-centric design.",
-                contact_title: "Establish Contact", contact_p1: "For inquiries, collaborations, or feedback, please connect with us. We value your input.",
-                privacy_title: "Privacy Protocol", privacy_p1: "Your digital privacy is paramount. This platform operates entirely on your device (client-side). No data you input is ever transmitted or stored on our servers.", privacy_p2: "File processing is handled locally within your browser's secure environment. While some functionalities may utilize trusted third-party libraries, we ensure they align with our stringent privacy standards.",
-                disclaimer_title: "Disclaimer", disclaimer_p1: "The utilities on this hub are provided for informational and practical purposes. While engineered for accuracy, we do not guarantee their results. Decisions made based on the output of these tools are at your sole discretion.", disclaimer_p2: "We are not liable for any outcomes resulting from the use of this platform. The 'Mobile Recharge' tool is a non-operational UI concept.",
-                age_calculator_name: "Chrono Calculator", age_calculator_desc: "Calculate your precise chronological age in years, months, and days.",
-                bmi_calculator_name: "Vitality Index (BMI)", bmi_calculator_desc: "Assess your Body Mass Index with our health-focused calculator.",
-                emi_calculator_name: "Loan Synthesizer (EMI)", emi_calculator_desc: "Synthesize equated monthly installments for your financial ventures.",
-                qr_generator_name: "Quantum QR Generator", qr_generator_desc: "Instantly generate Quantum-Ready QR codes for any data stream.",
-                image_compressor_name: "Image Optimizer", image_compressor_desc: "Optimize image data, reducing file size without perceptible loss.",
-                unit_converter_name: "Unit Transmuter", unit_converter_desc: "Transmute units of length, weight, and other physical dimensions.",
-                recharge_tool_name: "Energy-Up (Demo)", recharge_tool_desc: "A conceptual UI for a futuristic mobile energy-up portal.",
-                gst_calculator_name: "Tax Matrix Calculator", gst_calculator_desc: "Calculate GST and other percentage-based tax matrixes instantly.",
-                num_to_words_name: "Numeral-to-Lexicon", num_to_words_desc: "Convert numerical data into written lexicon for official documents.",
-                text_formatter_name: "Text Manipulator", text_formatter_desc: "Manipulate and format text streams with various case algorithms."
+                about_title: "About The Hub", about_p1: "Welcome to the Futuristic Utility Hub...", about_p2: "Every tool on this platform is crafted...",
+                contact_title: "Establish Contact", contact_p1: "For inquiries, collaborations, or feedback...",
+                privacy_title: "Privacy Protocol", privacy_p1: "Your digital privacy is paramount...", privacy_p2: "File processing is handled locally...",
+                disclaimer_title: "Disclaimer", disclaimer_p1: "The utilities on this hub are provided...", disclaimer_p2: "We are not liable for any outcomes...",
+                age_calculator_name: "Chrono Calculator", age_calculator_desc: "Calculate your precise chronological age.",
+                bmi_calculator_name: "Vitality Index (BMI)", bmi_calculator_desc: "Assess your Body Mass Index.",
+                emi_calculator_name: "Loan Synthesizer (EMI)", emi_calculator_desc: "Synthesize equated monthly installments.",
+                qr_generator_name: "Quantum QR Generator", qr_generator_desc: "Instantly generate QR codes for any data.",
+                image_compressor_name: "Image Optimizer", image_compressor_desc: "Optimize image data, reducing file size.",
+                unit_converter_name: "Unit Transmuter", unit_converter_desc: "Transmute units of length, weight, etc.",
+                recharge_tool_name: "Energy-Up (Demo)", recharge_tool_desc: "A conceptual UI for a mobile recharge.",
+                gst_calculator_name: "Tax Matrix Calculator", gst_calculator_desc: "Calculate GST and tax matrixes instantly.",
+                num_to_words_name: "Numeral-to-Lexicon", num_to_words_desc: "Convert numbers into written lexicon.",
+                text_formatter_name: "Text Manipulator", text_formatter_desc: "Manipulate text with case algorithms."
             },
             gu: { 
+                lang_en_btn: "EN", lang_gu_btn: "GU",
                 dev_name: "ચિરાગ સાથવારા દ્વારા વિકસિત", main_title: "ફ્યુચરિસ્ટિક યુટિલિટી હબ", main_subtitle: "આધુનિક સમસ્યાઓ માટે નેક્સ્ટ-જનરેશન ટૂલ્સ.",
                 footer_about: "પરિચય", footer_contact: "સંપર્ક", footer_privacy: "ગોપનીયતા", footer_disclaimer: "અસ્વીકૃતિ",
                 footer_copyright: "© ૨૦૨૪ યુટિલિટી હબ. ચિરાગ સાથવારા દ્વારા સર્વાધિકાર સુરક્ષિત.",
                 about_title: "હબ વિશે પરિચય", about_p1: "ફ્યુચરિસ્ટિક યુટિલિટી હબમાં આપનું સ્વાગત છે...", about_p2: "આ પ્લેટફોર્મ પરનું દરેક ટૂલ...",
                 contact_title: "સંપર્ક સ્થાપિત કરો", contact_p1: "પૂછપરછ, સહયોગ અથવા પ્રતિસાદ માટે...",
-                privacy_title: "ગોપનીયતા પ્રોટોકોલ", privacy_p1: "તમારી ડિજિટલ ગોપનીયતા સર્વોપરી છે...", privacy_p2: "ફાઇલ પ્રોસેસિંગ તમારા બ્રાઉઝરના સુરક્ષિત વાતાવરણમાં...",
-                disclaimer_title: "અસ્વીકૃતિ", disclaimer_p1: "આ હબ પરની ઉપયોગિતાઓ માહિતીપ્રદ...", disclaimer_p2: "અમે આ પ્લેટફોર્મના ઉપયોગથી થતા...",
-                age_calculator_name: "ક્રોનો કેલ્ક્યુલેટર", age_calculator_desc: "તમારી ચોક્કસ કાલક્રમિક ઉંમર વર્ષો, મહિનાઓ અને દિવસોમાં ગણો.",
-                bmi_calculator_name: "વાઇટાલિટી ઇન્ડેક્સ (BMI)", bmi_calculator_desc: "અમારા સ્વાસ્થ્ય-કેન્દ્રિત કેલ્ક્યુલેટર વડે તમારો બોડી માસ ઇન્ડેક્સ તપાસો.",
-                emi_calculator_name: "લોન સિન્થેસાઇઝર (EMI)", emi_calculator_desc: "તમારા નાણાકીય સાહસો માટે માસિક હપ્તાઓને સંશ્લેષિત કરો.",
-                qr_generator_name: "ક્વોન્ટમ QR જનરેટર", qr_generator_desc: "કોઈપણ ડેટા સ્ટ્રીમ માટે તરત જ ક્વોન્ટમ-રેડી QR કોડ જનરેટ કરો.",
-                image_compressor_name: "ઇમેજ ઓપ્ટિમાઇઝર", image_compressor_desc: "છબી ડેટાને ઑપ્ટિમાઇઝ કરો, ગુણવત્તા ગુમાવ્યા વિના ફાઇલનું કદ ઘટાડો.",
-                unit_converter_name: "યુનિટ ટ્રાન્સમ્યુટર", unit_converter_desc: "લંબાઈ, વજન અને અન્ય ભૌત
+                privacy_title: "ગોપનીયતા પ્રોટોકોલ", privacy_p1: "તમારી ડિજિટલ ગોપનીયતા સર્વોપરી છે...", privacy_p2: "ફાઇલ પ્રોસેસિંગ તમારા બ્રાઉઝરના...",
+                disclaimer_title: "અસ્વીકૃતિ", disclaimer_p1: "આ હબ પરની ઉપયોગિતાઓ માહિતીપ્રદ...", disclaimer_p2: "અમે આ પ્લેટફોર્મના ઉપયોગથી...",
+                age_calculator_name: "ક્રોનો કેલ્ક્યુલેટર", age_calculator_desc: "તમારી ચોક્કસ ઉંમરની ગણતરી કરો.",
+                bmi_calculator_name: "વાઇટાલિટી ઇન્ડેક્સ (BMI)", bmi_calculator_desc: "તમારો બોડી માસ ઇન્ડેક્સ તપાસો.",
+                emi_calculator_name: "લોન સિન્થેસાઇઝર (EMI)", emi_calculator_desc: "માસિક હપ્તાઓને સંશ્લેષિત કરો.",
+                qr_generator_name: "ક્વોન્ટમ QR જનરેટર", qr_generator_desc: "કોઈપણ ડેટા માટે QR કોડ બનાવો.",
+                image_compressor_name: "ઇમેજ ઓપ્ટિમાઇઝર", image_compressor_desc: "છબી ડેટા ઑપ્ટિમાઇઝ કરી ફાઇલ ઘટાડો.",
+                unit_converter_name: "યુનિટ ટ્રાન્સમ્યુટર", unit_converter_desc: "લંબાઈ, વજન, વગેરેના એકમો રૂપાંતરિત કરો.",
+                recharge_tool_name: "એનર્જી-અપ (ડેમો)", recharge_tool_desc: "મોબાઇલ રિચાર્જ માટે એક વૈચારિક UI.",
+                gst_calculator_name: "ટેક્સ મેટ્રિક્સ કેલ્ક્યુલેટર", gst_calculator_desc: "GST અને ટેક્સ મેટ્રિક્સની ગણતરી કરો.",
+                num_to_words_name: "ન્યુમરલ-ટુ-લેક્સિકોન", num_to_words_desc: "સંખ્યાઓને લેખિત લેક્સિકોનમાં રૂપાંતરિત કરો.",
+                text_formatter_name: "ટેક્સ્ટ મેનિપ્યુલેટર", text_formatter_desc: "કેસ અલ્ગોરિધમ્સ સાથે ટેક્સ્ટ મેનિપ્યુલેટ કરો."
+            }
+        };
+        const icons = {
+            age_calculator: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19,4H18V2h-2v2H8V2H6v2H5C3.89,4,3.01,4.89,3.01,6L3,20a2,2,0,0,0,2,2h14c1.1,0,2-0.9,2-2V6C21,4.89,20.1,4,19,4zM19,20H5V10h14V20zM9,14H7v-2h2V14zM13,14h-2v-2h2V14zM17,14h-2v-2h2V14zM9,18H7v-2h2V18zM13,18h-2v-2h2V18zM17,18h-2v-2h2V18z"/></svg>`,
+            bmi_calculator: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12,2C6.48,2,2,6.48,2,12s4.48,10,10,10,10-4.48,10-10S17.52,2,12,2zM17,18h-2v-2c0-1.1-0.9-2-2-2h-2c-1.1,0-2,0.9-2,2v2H7v-2c0-2.21,1.79-4,4-4h2c2.21,0,4,1.79,4,4V18zM12,12c-1.66,0-3-1.34-3-3s1.34-3,3-3,3,1.34,3,3S13.66,12,12,12z"/></svg>`,
+            emi_calculator: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4,10h16v2H4V10zM4,6h16v2H4V6zM21,14H3c-1.1,0-2,0.9-2,2v6h20v-6C23,14.9,22.1,14,21,14zM7,19H5v-2h2V19zM11,19H9v-2h2V19zM15,19h-2v-2h2V19z"/></svg>`,
+            qr_generator: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3,11h8V3H3V11zM5,5h4v4H5V5zM3,21h8v-8H3V21zM5,15h4v4H5V15zM13,3v8h8V3H13zM19,9h-4V5h4V9zM13,13h2v2h-2V13zM15,15h2v2h-2V15zM13,17h2v2h-2V17zM15,19h2v2h-2V19zM17,17h2v2h-2V17zM19,15h2v2h-2V15zM17,13h2v2h-2V13zM19,19h2v2h-2V19z"/></svg>`,
+            image_compressor: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21,19V5c0-1.1-0.9-2-2-2H5C3.9,3,3,3.9,3,5v14c0,1.1,0.9,2,2,2h14C20.1,21,21,20.1,21,19zM8.5,13.5l2.5,3.01L14.5,12l4.5,6H5L8.5,13.5zM17,8.5c-0.83,0-1.5-0.67-1.5-1.5s0.67-1.5,1.5-1.5,1.5,0.67,1.5,1.5S17.83,8.5,17,8.5z"/></svg>`,
+            unit_converter: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6.99,11L3,15l3.99,4v-3H14v-2H6.99V11zM17.01,13L21,9l-3.99-4v3H10v2h7.01V13z"/></svg>`,
+            recharge_tool: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12,2C6.48,2,2,6.48,2,12s4.48,10,10,10,10-4.48,10-10S17.52,2,12,2zM12,20c-4.41,0-8-3.59-8-8s3.59-8,8-8,8,3.59,8,8S16.41,20,12,20zM12.5,7H11v6l5.25,3.15,0.75-1.23-4.5-2.67V7z"/></svg>`,
+            gst_calculator: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15,2H9C8.45,2,8,2.45,8,3v1H4v2h16V4h-4V3C16,2.45,15.55,2,15,2zM11.5,12.5c0,0.83,0.67,1.5,1.5,1.5s1.5-0.67,1.5-1.5S13.83,11,13,11S11.5,11.67,11.5,12.5zM19,20H5V9h14V20zM17,15v2H7v-2H17z"/></svg>`,
+            num_to_words: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15,5H5v2h10V5zM15,9H5v2h10V9zM5,15h10v-2H5V15zM19,5h-2v14h2V5zM3,5H1v14h2V5z"/></svg>`,
+            text_formatter: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2.5,4v3h5v12h3V7h5V4H2.5z M21.5,9h-9v3h3v7h3v-7h3V9z"/></svg>`,
+        };
+        const tools = [
+            { id: 'age_calculator', name_key: 'age_calculator_name', desc_key: 'age_calculator_desc' }, { id: 'bmi_calculator', name_key: 'bmi_calculator_name', desc_key: 'bmi_calculator_desc' },
+            { id: 'emi_calculator', name_key: 'emi_calculator_name', desc_key: 'emi_calculator_desc' }, { id: 'qr_generator', name_key: 'qr_generator_name', desc_key: 'qr_generator_desc' },
+            { id: 'image_compressor', name_key: 'image_compressor_name', desc_key: 'image_compressor_desc' }, { id: 'unit_converter', name_key: 'unit_converter_name', desc_key: 'unit_converter_desc' },
+            { id: 'recharge_tool', name_key: 'recharge_tool_name', desc_key: 'recharge_tool_desc' }, { id: 'gst_calculator', name_key: 'gst_calculator_name', desc_key: 'gst_calculator_desc' },
+            { id: 'num_to_words', name_key: 'num_to_words_name', desc_key: 'num_to_words_desc' }, { id: 'text_formatter', name_key: 'text_formatter_name', desc_key: 'text_formatter_desc' },
+        ];
+        
+        let currentLang = 'en';
+        const toolGrid = document.getElementById('tool-grid');
+        const toolDisplayArea = document.getElementById('tool-display-area');
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.querySelectorAll('[data-lang-key]').forEach(el => {
+                const key = el.dataset.langKey;
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+            document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+            document.getElementById('lang-gu').classList.toggle('active', lang === 'gu');
+            renderToolGrid();
+        }
+
+        function renderToolGrid() {
+            toolGrid.innerHTML = '';
+            tools.forEach((tool, index) => {
+                const card = document.createElement('div');
+                card.className = 'tool-card';
+                card.dataset.toolId = tool.id;
+                card.style.animationDelay = `${index * 100}ms`;
+                card.innerHTML = `<div class="icon">${icons[tool.id]}</div><h3>${translations[currentLang][tool.name_key]}</h3><p>${translations[currentLang][tool.desc_key]}</p>`;
+                toolGrid.appendChild(card);
+                card.addEventListener('click', () => showTool(tool.id));
+            });
+            VanillaTilt.init(document.querySelectorAll(".tool-card"), { max: 15, speed: 400, glare: true, "max-glare": 0.5 });
+        }
+
+        function init() {
+            document.getElementById('lang-en').addEventListener('click', () => setLanguage('en'));
+            document.getElementById('lang-gu').addEventListener('click', () => setLanguage('gu'));
+            setLanguage('en');
+
+            document.querySelectorAll('.modal-trigger').forEach(trigger => {
+                trigger.addEventListener('click', e => { e.preventDefault(); document.getElementById(trigger.dataset.modal).style.display = 'flex'; });
+            });
+            document.querySelectorAll('.modal .close-button').forEach(button => {
+                button.addEventListener('click', () => button.closest('.modal').style.display = 'none');
+            });
+            window.addEventListener('click', e => { if (e.target.classList.contains('modal')) e.target.style.display = 'none'; });
+        }
+        function showTool(toolId) { toolDisplayArea.style.display = 'block'; const toolTitleEl = document.getElementById('tool-title'), toolContentEl = document.getElementById('tool-content'), toolData = tools.find(t => t.id === toolId); toolTitleEl.textContent = translations[currentLang][toolData.name_key]; renderToolUI(toolId, toolContentEl); toolDisplayArea.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+        function renderToolUI(toolId, container) { container.innerHTML = ''; const toolUIMap = { 'age_calculator': getAgeCalculatorHTML, 'bmi_calculator': getBMICalculatorHTML, 'emi_calculator': getEMICalculatorHTML, 'qr_generator': getQRGeneratorHTML, 'image_compressor': getImageCompressorHTML, 'recharge_tool': getRechargeToolHTML, 'gst_calculator': getGstCalculatorHTML, 'num_to_words': getNumToWordsHTML, 'text_formatter': getTextFormatterHTML, 'unit_converter': getUnitConverterHTML }; if (toolUIMap[toolId]) { container.innerHTML = toolUIMap[toolId](); const eventHandlerMap = { 'age_calculator': () => document.getElementById('dob-input').addEventListener('input', calculateAge), 'bmi_calculator': () => { ['bmi-height', 'bmi-weight'].forEach(id => document.getElementById(id).addEventListener('input', calculateBMI)); }, 'emi_calculator': () => { ['emi-amount', 'emi-rate', 'emi-tenure'].forEach(id => document.getElementById(id).addEventListener('input', calculateEMI)); }, 'qr_generator': () => { document.getElementById('qr-text').addEventListener('input', generateQRCode); generateQRCode(); }, 'image_compressor': () => { document.getElementById('image-upload').addEventListener('change', compressImage); }, 'recharge_tool': () => { document.getElementById('recharge-btn').addEventListener('click', (e) => { e.preventDefault(); alert('This is a demo. No actual recharge will be performed.'); }); }, 'gst_calculator': () => { ['gst-amount', 'gst-rate'].forEach(id => document.getElementById(id).addEventListener('input', calculateGST)); }, 'num_to_words': () => { document.getElementById('num-input').addEventListener('input', convertNumberToWords); }, 'text_formatter': () => { document.getElementById('text-input').addEventListener('input', formatText); document.querySelectorAll('.format-btn').forEach(btn => btn.addEventListener('click', formatText)); }, 'unit_converter': () => { ['unit-input', 'from-unit', 'to-unit'].forEach(id => document.getElementById(id).addEventListener('input', convertUnits)); } }; if(eventHandlerMap[toolId]) eventHandlerMap[toolId](); } else { container.innerHTML = `<p>Tool coming soon...</p>`; } }
+        function getAgeCalculatorHTML() { return `<div class="form-group"><label>Enter your Date of Birth</label><input type="date" id="dob-input"></div><div class="tool-result" id="age-result" style="display:none;"><h4>Your Age Is</h4><p></p></div>`; }
+        function getBMICalculatorHTML() { return `<div class="form-group"><label>Height (cm)</label><input type="number" id="bmi-height" placeholder="e.g., 175"></div><div class="form-group"><label>Weight (kg)</label><input type="number" id="bmi-weight" placeholder="e.g., 70"></div><div class="tool-result" id="bmi-result" style="display:none;"><h4>Your BMI</h4><p></p><span></span></div>`; }
+        function getEMICalculatorHTML() { return `<div class="form-group"><label>Loan Amount (₹)</label><input type="number" id="emi-amount" placeholder="e.g., 100000"></div><div class="form-group"><label>Interest Rate (% per annum)</label><input type="number" id="emi-rate" placeholder="e.g., 10.5"></div><div class="form-group"><label>Loan Tenure (months)</label><input type="number" id="emi-tenure" placeholder="e.g., 12"></div><div class="tool-result" id="emi-result" style="display:none;"><h4>Your Monthly EMI</h4><p></p></div>`; }
+        function getQRGeneratorHTML() { return `<div class="form-group"><label>Enter Text or URL</label><textarea id="qr-text" rows="4">Developed by Chirag Sathwara</textarea></div><div class="tool-result" style="text-align:center; background: white; padding: 20px;"><div id="qrcode"></div></div>`; }
+        function getImageCompressorHTML() { return `<div class="form-group"><label>Select an Image to Optimize</label><input type="file" id="image-upload" accept="image/*"></div><div class="tool-result" id="image-result" style="display:none;"></div>`; }
+        function getRechargeToolHTML() { return `<form><div class="form-group"><label>Mobile Number</label><input type="tel" placeholder="Enter 10-digit number"></div><div class="form-group"><label>Operator</label><select><option>Jio</option><option>Airtel</option><option>Vi</option><option>BSNL</option></select></div><div class="form-group"><label>Amount (₹)</label><input type="number" placeholder="Enter amount"></div><button id="recharge-btn" class="action-button">Initiate Energy-Up</button></form>`; }
+        function getGstCalculatorHTML() { return `<div class="form-group"><label>Amount (before Tax)</label><input type="number" id="gst-amount" placeholder="e.g., 1000"></div><div class="form-group"><label>Tax Rate (%)</label><select id="gst-rate"><option>3</option><option>5</option><option>12</option><option>18</option><option>28</option></select></div><div class="tool-result" id="gst-result" style="display:none;"></div>`; }
+        function getNumToWordsHTML() { return `<div class="form-group"><label>Enter Number</label><input type="number" id="num-input" placeholder="e.g., 12345"></div><div class="tool-result" id="num-result" style="display:none;"><h4>In Lexicon</h4><p style="font-size: 1.2rem;"></p></div>`; }
+        function getTextFormatterHTML() { return `<div class="form-group"><label>Input Text Stream</label><textarea id="text-input" rows="6"></textarea></div><div style="display:flex; gap:10px; flex-wrap:wrap;"><button class="action-button format-btn" data-format="upper">UPPERCASE</button><button class="action-button format-btn" data-format="lower">lowercase</button><button class="action-button format-btn" data-format="sentence">Sentence case</button><button class="action-button format-btn" data-format="title">Title Case</button></div>`; }
+        function getUnitConverterHTML() { return `<div class="form-group"><label>Value</label><input type="number" id="unit-input"></div><div style="display:flex; gap:20px;"><div class="form-group" style="flex:1;"><label>From</label><select id="from-unit"><option value="km">Kilometer</option><option value="m">Meter</option><option value="kg">Kilogram</option><option value="g">Gram</option></select></div><div class="form-group" style="flex:1;"><label>To</label><select id="to-unit"><option value="m">Meter</option><option value="km">Kilometer</option><option value="g">Gram</option><option value="kg">Kilogram</option></select></div></div><div class="tool-result" id="unit-result" style="display:none;"><h4>Result</h4><p></p></div>`; }
+        function calculateAge() { const dob = document.getElementById('dob-input').value, resultDiv = document.getElementById('age-result'); if (!dob) { resultDiv.style.display = 'none'; return; } const birthDate = new Date(dob), today = new Date(); let years = today.getFullYear() - birthDate.getFullYear(), months = today.getMonth() - birthDate.getMonth(), days = today.getDate() - birthDate.getDate(); if (days < 0) { months--; days += new Date(today.getFullYear(), today.getMonth(), 0).getDate(); } if (months < 0) { years--; months += 12; } resultDiv.style.display = 'block'; resultDiv.querySelector('p').textContent = `${years} Years, ${months} Months, ${days} Days`; }
+        function calculateBMI() { const h = parseFloat(document.getElementById('bmi-height').value), w = parseFloat(document.getElementById('bmi-weight').value), resultDiv = document.getElementById('bmi-result'); if (!h || !w || h <= 0 || w <= 0) { resultDiv.style.display = 'none'; return; } const bmi = (w / ((h / 100) ** 2)).toFixed(2); let category = ''; if (bmi < 18.5) category = "Underweight"; else if (bmi < 24.9) category = "Normal weight"; else if (bmi < 29.9) category = "Overweight"; else category = "Obesity"; resultDiv.style.display = 'block'; resultDiv.querySelector('p').textContent = bmi; resultDiv.querySelector('span').textContent = category; }
+        function calculateEMI() { const p = parseFloat(document.getElementById('emi-amount').value), r = parseFloat(document.getElementById('emi-rate').value) / 12 / 100, n = parseFloat(document.getElementById('emi-tenure').value), resultDiv = document.getElementById('emi-result'); if (!p || !r || !n || p <= 0 || r <= 0 || n <= 0) { resultDiv.style.display = 'none'; return; } const emi = (p * r * (1 + r) ** n) / ((1 + r) ** n - 1); resultDiv.style.display = 'block'; resultDiv.querySelector('p').textContent = `₹ ${emi.toFixed(2)}`; }
+        function generateQRCode() { const text = document.getElementById('qr-text').value, qrCodeEl = document.getElementById('qrcode'); qrCodeEl.innerHTML = ''; new QRCode(qrCodeEl, { text: text, width: 200, height: 200, colorDark : "#0a0a10", colorLight : "#ffffff", correctLevel : QRCode.CorrectLevel.H }); }
+        async function compressImage() { const file = document.getElementById('image-upload').files[0], resultDiv = document.getElementById('image-result'); if (!file) return; resultDiv.style.display = 'block'; resultDiv.innerHTML = `<p>Optimizing...</p>`; const options = { maxSizeMB: 1, maxWidthOrHeight: 1920, useWebWorker: true }; try { const compressedFile = await imageCompression(file, options), originalSize = (file.size / 1024).toFixed(2), compressedSize = (compressedFile.size / 1024).toFixed(2), reduction = (((originalSize - compressedSize) / originalSize) * 100).toFixed(1); const downloadUrl = URL.createObjectURL(compressedFile); resultDiv.innerHTML = `<p>Original Size: ${originalSize} KB | Optimized Size: ${compressedSize} KB (${reduction}% reduction)</p><a href="${downloadUrl}" download="optimized_${file.name}" class="action-button" style="margin-top:15px; display:inline-block;">Download Image</a>`; } catch (error) { resultDiv.innerHTML = `<p>Error: ${error.message}</p>`; } }
+        function calculateGST() { const amount = parseFloat(document.getElementById('gst-amount').value), rate = parseFloat(document.getElementById('gst-rate').value), resultDiv = document.getElementById('gst-result'); if (isNaN(amount) || isNaN(rate)) { resultDiv.style.display = 'none'; return; } const gstAmount = (amount * rate) / 100, totalAmount = amount + gstAmount; resultDiv.style.display = 'block'; resultDiv.innerHTML = `<p>Tax Amount: ₹ ${gstAmount.toFixed(2)}</p><p>Total Amount: ₹ ${totalAmount.toFixed(2)}</p>`; }
+        function convertNumberToWords() { const num = document.getElementById('num-input').value, resultDiv = document.getElementById('num-result'); if (!num) { resultDiv.style.display = 'none'; return; } resultDiv.style.display = 'block'; resultDiv.querySelector('p').textContent = numberToWords.toWords(num); }
+        function formatText(e) { const textarea = document.getElementById('text-input'), format = e.target.dataset.format; switch(format) { case 'upper': textarea.value = textarea.value.toUpperCase(); break; case 'lower': textarea.value = textarea.value.toLowerCase(); break; case 'sentence': textarea.value = textarea.value.toLowerCase().replace(/(^\s*\w|[\.\!\?]\s*\w)/g, c => c.toUpperCase()); break; case 'title': textarea.value = textarea.value.toLowerCase().split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '); break; } }
+        function convertUnits() { const input = parseFloat(document.getElementById('unit-input').value), from = document.getElementById('from-unit').value, to = document.getElementById('to-unit').value, resultDiv = document.getElementById('unit-result'); if (isNaN(input)) { resultDiv.style.display = 'none'; return; } let result; const conversionRates = { 'km': 1000, 'm': 1, 'kg': 1000, 'g': 1 }; const baseValue = input * (conversionRates[from] || 0); result = baseValue / (conversionRates[to] || Infinity); resultDiv.style.display = 'block'; resultDiv.querySelector('p').textContent = isFinite(result) ? result.toFixed(3) : 'Invalid Conversion'; }
+        const numberToWords = (function() { const a = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'], b = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety']; function toWords(num) { if ((num = num.toString()).length > 9) return 'overflow'; const n = ('000000000' + num).substr(-9).match(/^(\d{2})(\d{2})(\d{2})(\d{1})(\d{2})$/); if (!n) return ''; let str = ''; str += (n[1] != 0) ? (a[Number(n[1])] || b[n[1][0]] + ' ' + a[n[1][1]]) + ' crore ' : ''; str += (n[2] != 0) ? (a[Number(n[2])] || b[n[2][0]] + ' ' + a[n[2][1]]) + ' lakh ' : ''; str += (n[3] != 0) ? (a[Number(n[3])] || b[n[3][0]] + ' ' + a[n[3][1]]) + ' thousand ' : ''; str += (n[4] != 0) ? (a[Number(n[4])] || b[n[4][0]] + ' ' + a[n[4][1]]) + ' hundred ' : ''; str += (n[5] != 0) ? ((str != '') ? 'and ' : '') + (a[Number(n[5])] || b[n[5][0]] + ' ' + a[n[5][1]]) : ''; return str.trim() || 'zero'; } return { toWords: toWords }; })();
+        
+        init();
+    });
+    </script>
+</body>
+</html>
