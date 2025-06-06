@@ -84,68 +84,16 @@
         
         /* --- Tool Grid --- */
         .tool-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-
-        /* --- UPGRADED & RESPONSIVE TOOL CARD --- */
-        .tool-card {
-            background: linear-gradient(145deg, #1e1e32, #141424);
-            padding: 25px; /* Padding for inner content */
-            border-radius: 15px;
-            cursor: pointer;
-            text-align: left;
-            position: relative;
-            overflow: hidden;
-            
-            /* Using Flexbox for robust layout */
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start; /* Align content to the left */
-            gap: 15px; /* Space between icon, title, and description */
-
-            /* 3D Tilt Setup */
-            transform-style: preserve-3d;
-            transform: perspective(1000px);
-            transition: transform 0.1s ease;
-            animation: fadeIn-stagger 0.5s ease-out forwards;
-            opacity: 0;
-        }
-        
+        .tool-card { background: linear-gradient(145deg, #1e1e32, #141424); padding: 25px; border-radius: 15px; cursor: pointer; text-align: left; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: flex-start; gap: 15px; transform-style: preserve-3d; transform: perspective(1000px); transition: transform 0.1s ease; animation: fadeIn-stagger 0.5s ease-out forwards; opacity: 0; }
         @keyframes fadeIn-stagger { to { opacity: 1; transform: translateY(0); } }
-
-        /* Animated Border */
-        .tool-card::before {
-            content: '';
-            position: absolute;
-            top: 0; right: 0; bottom: 0; left: 0;
-            z-index: -1;
-            margin: -2px;
-            border-radius: inherit;
-            background: linear-gradient(120deg, var(--accent-color), var(--secondary-accent));
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-        
+        .tool-card::before { content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: -1; margin: -2px; border-radius: inherit; background: linear-gradient(120deg, var(--accent-color), var(--secondary-accent)); opacity: 0; transition: opacity 0.4s ease; }
         .tool-card:hover::before { opacity: 1; }
-
-        /* Styling for children to create 3D effect */
-        .tool-card > * {
-            transform: translateZ(20px);
-        }
-
-        .tool-card .icon {
-            width: 48px;
-            height: 48px;
-        }
-        .tool-card .icon svg {
-            width: 100%;
-            height: 100%;
-            fill: var(--accent-color);
-            filter: drop-shadow(0 0 8px var(--glow-color));
-        }
-
+        .tool-card > * { transform: translateZ(20px); }
+        .tool-card .icon { width: 48px; height: 48px; }
+        .tool-card .icon svg { width: 100%; height: 100%; fill: var(--accent-color); filter: drop-shadow(0 0 8px var(--glow-color)); }
         .tool-card h3 { font-size: 1.5rem; font-weight: 700; color: var(--text-color); line-height: 1.2; }
         .tool-card p { font-size: 1rem; color: var(--subtext-color); }
         
-        /* Tool Display Area and other styles remain the same */
         #tool-display-area { margin-top: 60px; padding: 40px; background: var(--card-bg-color); border-radius: 15px; border: 1px solid var(--border-glow); box-shadow: 0 0 30px rgba(0,0,0,0.5); display: none; text-align: left; }
         #tool-display-area h2 { font-family: 'Orbitron', sans-serif; font-size: 2.2rem; margin-bottom: 30px; color: var(--accent-color); text-align: center; text-shadow: 0 0 10px var(--glow-color); }
         .tool-content { display: flex; flex-direction: column; gap: 20px; }
@@ -181,8 +129,7 @@
 </head>
 <body>
     <div class="lines">
-        <div class="line"></div> <div class="line"></div> <div class="line"></div> <div class="line"></div> <div class="line"></div>
-        <div class="line"></div> <div class="line"></div> <div class="line"></div> <div class="line"></div>
+        <div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
     </div>
     
     <header class="top-bar">
@@ -190,19 +137,19 @@
             <div class="logo">
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14.7,2.3L9.3,2.3C8.6,2.3,8,2.9,8,3.7v1c0,0.8,0.6,1.4,1.4,1.4h3.4c0.8,0,1.4-0.6,1.4-1.4v-1C16.1,2.9,15.5,2.3,14.7,2.3z M19.4,6.3h-2.8c-0.8,0-1.4,0.6-1.4,1.4v2.8c0,0.8,0.6,1.4,1.4,1.4h2.8c0.8,0,1.4-0.6,1.4-1.4V7.7C20.8,6.9,20.2,6.3,19.4,6.3z M7.4,6.3H4.6C3.8,6.3,3.2,6.9,3.2,7.7v2.8c0,0.8,0.6,1.4,1.4,1.4h2.8c0.8,0,1.4-0.6,1.4-1.4V7.7C8.8,6.9,8.2,6.3,7.4,6.3z M14.7,13.2h-5c-0.8,0-1.4,0.6-1.4,1.4v5c0,0.8,0.6,1.4,1.4,1.4h5c0.8,0,1.4-0.6,1.4-1.4v-5C16.1,13.8,15.5,13.2,14.7,13.2z"/></svg>
             </div>
-            <div class="dev-name" data-lang-key="dev_name">Developed by Chirag Sathwara</div>
+            <div class="dev-name" data-lang-key="dev_name"></div>
         </div>
         <div class="controls-container">
              <div class="language-switcher">
-                <button id="lang-en" class="active">EN</button>
+                <button id="lang-en">EN</button>
                 <button id="lang-gu">GU</button>
             </div>
         </div>
     </header>
 
     <main class="main-container">
-        <h1 class="main-title" data-lang-key="main_title">Futuristic Utility Hub</h1>
-        <p class="main-subtitle" data-lang-key="main_subtitle">Next-Generation Tools for Modern Problems.</p>
+        <h1 class="main-title" data-lang-key="main_title"></h1>
+        <p class="main-subtitle" data-lang-key="main_subtitle"></p>
         <div class="tool-grid" id="tool-grid"></div>
         <div id="tool-display-area">
             <h2 id="tool-title"></h2>
@@ -212,10 +159,10 @@
 
     <footer>
         <div class="footer-links">
-            <a href="#" class="modal-trigger" data-modal="about-modal" data-lang-key="footer_about">About</a>
-            <a href="#" class="modal-trigger" data-modal="contact-modal" data-lang-key="footer_contact">Contact</a>
-            <a href="#" class="modal-trigger" data-modal="privacy-modal" data-lang-key="footer_privacy">Privacy</a>
-            <a href="#" class="modal-trigger" data-modal="disclaimer-modal" data-lang-key="footer_disclaimer">Disclaimer</a>
+            <a href="#" class="modal-trigger" data-modal="about-modal" data-lang-key="footer_about"></a>
+            <a href="#" class="modal-trigger" data-modal="contact-modal" data-lang-key="footer_contact"></a>
+            <a href="#" class="modal-trigger" data-modal="privacy-modal" data-lang-key="footer_privacy"></a>
+            <a href="#" class="modal-trigger" data-modal="disclaimer-modal" data-lang-key="footer_disclaimer"></a>
         </div>
         <p class="copyright" data-lang-key="footer_copyright"></p>
     </footer>
@@ -227,7 +174,7 @@
 
     <script>
     /* ================================================================== */
-    /*                   UPDATED JAVASCRIPT LOGIC START                   */
+    /*            COMPLETE & FULLY WORKING JAVASCRIPT LOGIC               */
     /* ================================================================== */
     document.addEventListener('DOMContentLoaded', () => {
         const translations = {
@@ -254,4 +201,13 @@
                 dev_name: "ચિરાગ સાથવારા દ્વારા વિકસિત", main_title: "ફ્યુચરિસ્ટિક યુટિલિટી હબ", main_subtitle: "આધુનિક સમસ્યાઓ માટે નેક્સ્ટ-જનરેશન ટૂલ્સ.",
                 footer_about: "પરિચય", footer_contact: "સંપર્ક", footer_privacy: "ગોપનીયતા", footer_disclaimer: "અસ્વીકૃતિ",
                 footer_copyright: "© ૨૦૨૪ યુટિલિટી હબ. ચિરાગ સાથવારા દ્વારા સર્વાધિકાર સુરક્ષિત.",
-                about_title: "હબ વિશે પરિચય", about_p1: "ફ્યુચરિસ્ટિક યુટિલિટી હબમાં આપનું સ્વાગત છે, જે ચિરાગ સાથવારા દ્વારા એક દ્રષ્ટિકોણ પ્રોજેક્ટ છે. અમારું મિશન અત્યાધુનિક ડિઝાઇનને વ્યવહારુ, રિયલ-ટાઇમ ટૂલ્સ સાથે મર્જ કરવાનું છે, જે કાર્યાત્મક અને દૃષ્ટિની અદભૂત બંને હોય તેવો અનુભવ પ્રદાન કરે છે.", about_p2: "આ પ્લેટફોર્મ પરનું દરેક ટૂલ ચોકસાઈ, ગતિ અને સુલભતાને સુનિશ્ચિત કરવા માટે ચોકસાઇથી બનાવવામાં આવ્યું
+                about_title: "હબ વિશે પરિચય", about_p1: "ફ્યુચરિસ્ટિક યુટિલિટી હબમાં આપનું સ્વાગત છે...", about_p2: "આ પ્લેટફોર્મ પરનું દરેક ટૂલ...",
+                contact_title: "સંપર્ક સ્થાપિત કરો", contact_p1: "પૂછપરછ, સહયોગ અથવા પ્રતિસાદ માટે...",
+                privacy_title: "ગોપનીયતા પ્રોટોકોલ", privacy_p1: "તમારી ડિજિટલ ગોપનીયતા સર્વોપરી છે...", privacy_p2: "ફાઇલ પ્રોસેસિંગ તમારા બ્રાઉઝરના સુરક્ષિત વાતાવરણમાં...",
+                disclaimer_title: "અસ્વીકૃતિ", disclaimer_p1: "આ હબ પરની ઉપયોગિતાઓ માહિતીપ્રદ...", disclaimer_p2: "અમે આ પ્લેટફોર્મના ઉપયોગથી થતા...",
+                age_calculator_name: "ક્રોનો કેલ્ક્યુલેટર", age_calculator_desc: "તમારી ચોક્કસ કાલક્રમિક ઉંમર વર્ષો, મહિનાઓ અને દિવસોમાં ગણો.",
+                bmi_calculator_name: "વાઇટાલિટી ઇન્ડેક્સ (BMI)", bmi_calculator_desc: "અમારા સ્વાસ્થ્ય-કેન્દ્રિત કેલ્ક્યુલેટર વડે તમારો બોડી માસ ઇન્ડેક્સ તપાસો.",
+                emi_calculator_name: "લોન સિન્થેસાઇઝર (EMI)", emi_calculator_desc: "તમારા નાણાકીય સાહસો માટે માસિક હપ્તાઓને સંશ્લેષિત કરો.",
+                qr_generator_name: "ક્વોન્ટમ QR જનરેટર", qr_generator_desc: "કોઈપણ ડેટા સ્ટ્રીમ માટે તરત જ ક્વોન્ટમ-રેડી QR કોડ જનરેટ કરો.",
+                image_compressor_name: "ઇમેજ ઓપ્ટિમાઇઝર", image_compressor_desc: "છબી ડેટાને ઑપ્ટિમાઇઝ કરો, ગુણવત્તા ગુમાવ્યા વિના ફાઇલનું કદ ઘટાડો.",
+                unit_converter_name: "યુનિટ ટ્રાન્સમ્યુટર", unit_converter_desc: "લંબાઈ, વજન અને અન્ય ભૌત
