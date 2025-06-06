@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A futuristic collection of real-time online utility tools with a unique neon-glow UI and professional SVG icons. Fully responsive and developed by Chirag Sathwara.">
+    <meta name="keywords" content="responsive tools, futuristic ui, online tools, age calculator, bmi calculator, qr generator, image compressor, chirag sathwara, svg icons">
+    <meta name="author" content="Chirag Sathwara">
+    <title>Futuristic Utility Hub | Developed by Chirag Sathwara</title>
+
+    <!-- External Libraries (QR Code, Image Compressor) -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.2/dist/browser-image-compression.js"></script>
+    <!-- Library for 3D Tilt Effect -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
+
+    <style>
+        /* ================================================================== */
+        /*          FINAL, RESPONSIVE & ANIMATED CSS STYLES START           */
+        /* ================================================================== */
+        :root {
+            --bg-color: #0a0a10;
+            --card-bg-color: #1a1a2e;
+            --text-color: #e0e0ff;
+            --subtext-color: #a0a0c0;
+            --accent-color: #00f7ff;
+            --glow-color: rgba(0, 247, 255, 0.5);
+            --border-glow: rgba(0, 247, 255, 0.3);
+            --secondary-accent: #f700ff;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-color); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-color); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #00c4cc; }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 247, 255, 0.1), transparent 30%),
+                radial-gradient(circle at 80% 90%, rgba(247, 0, 255, 0.1), transparent 30%);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+        }
+        
+        /* --- Animated Background --- */
+        .lines { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; }
+        .lines .line { position: absolute; width: 1px; height: 100%; background: rgba(255, 255, 255, 0.05); }
+        .lines .line:nth-child(1) { left: 10%; } .lines .line:nth-child(2) { left: 20%; } .lines .line:nth-child(3) { left: 30%; }
+        .lines .line:nth-child(4) { left: 40%; } .lines .line:nth-child(5) { left: 50%; } .lines .line:nth-child(6) { left: 60%; }
+        .lines .line:nth-child(7) { left: 70%; } .lines .line:nth-child(8) { left: 80%; } .lines .line:nth-child(9) { left: 90%; }
+
+        /* --- Header / Top Bar --- */
+        .top-bar { width: 100%; padding: 15px 5%; background: rgba(26, 26, 46, 0.8); backdrop-filter: blur(10px); display: flex; justify-content: space-between; align-items: center; position: fixed; top: 0; z-index: 1000; border-bottom: 1px solid var(--border-glow); }
+        .logo-container { display: flex; align-items: center; gap: 15px; }
+        .logo-container .logo svg { width: 30px; height: 30px; fill: var(--accent-color); filter: drop-shadow(0 0 5px var(--glow-color)); animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+        .logo-container .dev-name { font-size: 1.1rem; font-weight: 700; letter-spacing: 1px; }
+        .controls-container { display: flex; align-items: center; gap: 20px; }
+        .language-switcher button { background: none; border: 1px solid var(--border-glow); color: var(--text-color); padding: 8px 15px; border-radius: 20px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; }
+        .language-switcher button.active { background-color: var(--accent-color); color: var(--bg-color); border-color: var(--accent-color); text-shadow: 0 0 5px var(--accent-color); }
+
+        /* --- Main Content --- */
+        .main-container { margin-top: 120px; width: 100%; max-width: 1200px; padding: 20px; text-align: center; }
+        .main-title { font-family: 'Orbitron', sans-serif; font-size: 3.5rem; font-weight: 900; margin-bottom: 15px; color: var(--text-color); text-shadow: 0 0 15px var(--glow-color); letter-spacing: 2px; }
+        .main-subtitle { font-size: 1.2rem; margin-bottom: 50px; color: var(--subtext-color); font-weight: 600; }
+        
+        /* --- Tool Grid --- */
+        .tool-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+
+        /* --- UPGRADED & RESPONSIVE TOOL CARD --- */
+        .tool-card {
+            background: linear-gradient(145deg, #1e1e32, #141424);
+            padding: 25px; /* Padding for inner content */
+            border-radius: 15px;
+            cursor: pointer;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+            
+            /* Using Flexbox for robust layout */
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Align content to the left */
+            gap: 15px; /* Space between icon, title, and description */
+
+            /* 3D Tilt Setup */
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
+            transition: transform 0.1s ease;
+            animation: fadeIn-stagger 0.5s ease-out forwards;
+            opacity: 0;
+        }
+        
+        @keyframes fadeIn-stagger { to { opacity: 1; transform: translateY(0); } }
+
+        /* Animated Border */
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0; bottom: 0; left: 0;
+            z-index: -1;
+            margin: -2px;
+            border-radius: inherit;
+            background: linear-gradient(120deg, var(--accent-color), var(--secondary-accent));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .tool-card:hover::before { opacity: 1; }
+
+        /* Styling for children to create 3D effect */
+        .tool-card > * {
+            transform: translateZ(20px);
+        }
+
+        .tool-card .icon {
+            width: 48px;
+            height: 48px;
+        }
+        .tool-card .icon svg {
+            width: 100%;
+            height: 100%;
+            fill: var(--accent-color);
+            filter: drop-shadow(0 0 8px var(--glow-color));
+        }
+
+        .tool-card h3 { font-size: 1.5rem; font-weight: 700; color: var(--text-color); line-height: 1.2; }
+        .tool-card p { font-size: 1rem; color: var(--subtext-color); }
+        
+        /* Tool Display Area and other styles remain the same */
+        #tool-display-area { margin-top: 60px; padding: 40px; background: var(--card-bg-color); border-radius: 15px; border: 1px solid var(--border-glow); box-shadow: 0 0 30px rgba(0,0,0,0.5); display: none; text-align: left; }
+        #tool-display-area h2 { font-family: 'Orbitron', sans-serif; font-size: 2.2rem; margin-bottom: 30px; color: var(--accent-color); text-align: center; text-shadow: 0 0 10px var(--glow-color); }
+        .tool-content { display: flex; flex-direction: column; gap: 20px; }
+        .form-group { display: flex; flex-direction: column; gap: 10px; }
+        .form-group label { font-weight: 600; font-size: 1.1rem; letter-spacing: 1px; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 15px; border-radius: 8px; border: 2px solid var(--border-glow); background-color: var(--bg-color); color: var(--text-color); font-size: 1rem; transition: border-color 0.3s ease, box-shadow 0.3s ease; }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--accent-color); box-shadow: 0 0 15px var(--glow-color); }
+        .tool-result { margin-top: 20px; padding: 20px; border-radius: 8px; background-color: var(--bg-color); border: 1px solid var(--border-glow); animation: fadeInResult 0.5s ease; }
+        @keyframes fadeInResult { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .tool-result h4 { margin-bottom: 10px; font-weight: 600; }
+        .tool-result p { font-size: 1.8rem; font-weight: 700; color: var(--accent-color); text-shadow: 0 0 5px var(--glow-color); }
+        .action-button { padding: 15px 30px; background: transparent; color: var(--accent-color); border: 2px solid var(--accent-color); border-radius: 8px; cursor: pointer; font-size: 1.1rem; font-weight: 700; letter-spacing: 1px; transition: all 0.3s ease; position: relative; overflow: hidden; }
+        .action-button::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(120deg, transparent, var(--glow-color), transparent); transition: left 0.5s ease; }
+        .action-button:hover { background: var(--accent-color); color: var(--bg-color); box-shadow: 0 0 20px var(--glow-color); }
+        .action-button:hover::before { left: 100%; }
+        .action-button:active { transform: scale(0.98); }
+        footer { width: 100%; margin-top: 60px; padding: 40px 5%; background: var(--card-bg-color); text-align: center; border-top: 1px solid var(--border-glow); }
+        .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-bottom: 20px; }
+        .footer-links a { color: var(--subtext-color); text-decoration: none; font-weight: 600; letter-spacing: 1px; transition: color 0.3s, text-shadow 0.3s; }
+        .footer-links a:hover { color: var(--accent-color); text-shadow: 0 0 5px var(--glow-color); }
+        .copyright { font-size: 1rem; color: var(--subtext-color); }
+        .modal { position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(10, 10, 16, 0.8); backdrop-filter: blur(5px); display: none; justify-content: center; align-items: center; }
+        .modal-content { background-color: var(--card-bg-color); padding: 40px; border-radius: 15px; width: 90%; max-width: 700px; max-height: 80vh; overflow-y: auto; position: relative; border: 1px solid var(--border-glow); box-shadow: 0 0 40px rgba(0,0,0,0.6); animation: modalOpen 0.4s ease; }
+        @keyframes modalOpen { from { transform: scale(0.8) translateY(20px); opacity: 0; } to { transform: scale(1) translateY(0); opacity: 1; } }
+        .close-button { position: absolute; top: 20px; right: 25px; font-size: 2rem; cursor: pointer; color: var(--subtext-color); transition: color 0.3s, transform 0.3s; }
+        .close-button:hover { color: var(--accent-color); transform: rotate(90deg); }
+        .modal-content h2 { font-family: 'Orbitron', sans-serif; font-size: 2rem; margin-bottom: 20px; color: var(--accent-color); text-shadow: 0 0 10px var(--glow-color); }
+        .modal-content p, .modal-content ul { margin-bottom: 15px; line-height: 1.8; color: var(--text-color); }
+        .modal-content li { margin-left: 20px; }
+        .modal-content a { color: var(--accent-color); font-weight: 600; text-decoration: none; }
+        @media (max-width: 768px) { .main-title { font-size: 2.5rem; } .dev-name { display: none; } .tool-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="lines">
+        <div class="line"></div> <div class="line"></div> <div class="line"></div> <div class="line"></div> <div class="line"></div>
+        <div class="line"></div> <div class="line"></div> <div class="line"></div> <div class="line"></div>
+    </div>
+    
+    <header class="top-bar">
+        <div class="logo-container">
+            <div class="logo">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14.7,2.3L9.3,2.3C8.6,2.3,8,2.9,8,3.7v1c0,0.8,0.6,1.4,1.4,1.4h3.4c0.8,0,1.4-0.6,1.4-1.4v-1C16.1,2.9,15.5,2.3,14.7,2.3z M19.4,6.3h-2.8c-0.8,0-1.4,0.6-1.4,1.4v2.8c0,0.8,0.6,1.4,1.4,1.4h2.8c0.8,0,1.4-0.6,1.4-1.4V7.7C20.8,6.9,20.2,6.3,19.4,6.3z M7.4,6.3H4.6C3.8,6.3,3.2,6.9,3.2,7.7v2.8c0,0.8,0.6,1.4,1.4,1.4h2.8c0.8,0,1.4-0.6,1.4-1.4V7.7C8.8,6.9,8.2,6.3,7.4,6.3z M14.7,13.2h-5c-0.8,0-1.4,0.6-1.4,1.4v5c0,0.8,0.6,1.4,1.4,1.4h5c0.8,0,1.4-0.6,1.4-1.4v-5C16.1,13.8,15.5,13.2,14.7,13.2z"/></svg>
+            </div>
+            <div class="dev-name" data-lang-key="dev_name">Developed by Chirag Sathwara</div>
+        </div>
+        <div class="controls-container">
+             <div class="language-switcher">
+                <button id="lang-en" class="active">EN</button>
+                <button id="lang-gu">GU</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <h1 class="main-title" data-lang-key="main_title">Futuristic Utility Hub</h1>
+        <p class="main-subtitle" data-lang-key="main_subtitle">Next-Generation Tools for Modern Problems.</p>
+        <div class="tool-grid" id="tool-grid"></div>
+        <div id="tool-display-area">
+            <h2 id="tool-title"></h2>
+            <div id="tool-content" class="tool-content"></div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#" class="modal-trigger" data-modal="about-modal" data-lang-key="footer_about">About</a>
+            <a href="#" class="modal-trigger" data-modal="contact-modal" data-lang-key="footer_contact">Contact</a>
+            <a href="#" class="modal-trigger" data-modal="privacy-modal" data-lang-key="footer_privacy">Privacy</a>
+            <a href="#" class="modal-trigger" data-modal="disclaimer-modal" data-lang-key="footer_disclaimer">Disclaimer</a>
+        </div>
+        <p class="copyright" data-lang-key="footer_copyright"></p>
+    </footer>
+    
+    <div id="about-modal" class="modal"><div class="modal-content"><span class="close-button">×</span><h2 data-lang-key="about_title"></h2><p data-lang-key="about_p1"></p><p data-lang-key="about_p2"></p></div></div>
+    <div id="contact-modal" class="modal"><div class="modal-content"><span class="close-button">×</span><h2 data-lang-key="contact_title"></h2><p data-lang-key="contact_p1"></p><p><strong>Email:</strong> <a href="mailto:aichiragbusinessid@gmail.com">aichiragbusinessid@gmail.com</a></p></div></div>
+    <div id="privacy-modal" class="modal"><div class="modal-content"><span class="close-button">×</span><h2 data-lang-key="privacy_title"></h2><p data-lang-key="privacy_p1"></p><p data-lang-key="privacy_p2"></p></div></div>
+    <div id="disclaimer-modal" class="modal"><div class="modal-content"><span class="close-button">×</span><h2 data-lang-key="disclaimer_title"></h2><p data-lang-key="disclaimer_p1"></p><p data-lang-key="disclaimer_p2"></p></div></div>
+
+    <script>
+    /* ================================================================== */
+    /*                   UPDATED JAVASCRIPT LOGIC START                   */
+    /* ================================================================== */
+    document.addEventListener('DOMContentLoaded', () => {
+        const translations = {
+            en: {
+                dev_name: "Developed by Chirag Sathwara", main_title: "Futuristic Utility Hub", main_subtitle: "Next-Generation Tools for Modern Problems.",
+                footer_about: "About", footer_contact: "Contact", footer_privacy: "Privacy", footer_disclaimer: "Disclaimer",
+                footer_copyright: "© 2024 Utility Hub. All Rights Reserved by Chirag Sathwara.",
+                about_title: "About The Hub", about_p1: "Welcome to the Futuristic Utility Hub, a visionary project by Chirag Sathwara. Our mission is to merge cutting-edge design with practical, real-time tools, providing an experience that is both functional and visually stunning.", about_p2: "Every tool on this platform is crafted with precision, ensuring accuracy, speed, and accessibility. This hub is a demonstration of what's possible when modern web technologies meet a passion for innovation and user-centric design.",
+                contact_title: "Establish Contact", contact_p1: "For inquiries, collaborations, or feedback, please connect with us. We value your input.",
+                privacy_title: "Privacy Protocol", privacy_p1: "Your digital privacy is paramount. This platform operates entirely on your device (client-side). No data you input is ever transmitted or stored on our servers.", privacy_p2: "File processing is handled locally within your browser's secure environment. While some functionalities may utilize trusted third-party libraries, we ensure they align with our stringent privacy standards.",
+                disclaimer_title: "Disclaimer", disclaimer_p1: "The utilities on this hub are provided for informational and practical purposes. While engineered for accuracy, we do not guarantee their results. Decisions made based on the output of these tools are at your sole discretion.", disclaimer_p2: "We are not liable for any outcomes resulting from the use of this platform. The 'Mobile Recharge' tool is a non-operational UI concept.",
+                age_calculator_name: "Chrono Calculator", age_calculator_desc: "Calculate your precise chronological age in years, months, and days.",
+                bmi_calculator_name: "Vitality Index (BMI)", bmi_calculator_desc: "Assess your Body Mass Index with our health-focused calculator.",
+                emi_calculator_name: "Loan Synthesizer (EMI)", emi_calculator_desc: "Synthesize equated monthly installments for your financial ventures.",
+                qr_generator_name: "Quantum QR Generator", qr_generator_desc: "Instantly generate Quantum-Ready QR codes for any data stream.",
+                image_compressor_name: "Image Optimizer", image_compressor_desc: "Optimize image data, reducing file size without perceptible loss.",
+                unit_converter_name: "Unit Transmuter", unit_converter_desc: "Transmute units of length, weight, and other physical dimensions.",
+                recharge_tool_name: "Energy-Up (Demo)", recharge_tool_desc: "A conceptual UI for a futuristic mobile energy-up portal.",
+                gst_calculator_name: "Tax Matrix Calculator", gst_calculator_desc: "Calculate GST and other percentage-based tax matrixes instantly.",
+                num_to_words_name: "Numeral-to-Lexicon", num_to_words_desc: "Convert numerical data into written lexicon for official documents.",
+                text_formatter_name: "Text Manipulator", text_formatter_desc: "Manipulate and format text streams with various case algorithms."
+            },
+            gu: { 
+                dev_name: "ચિરાગ સાથવારા દ્વારા વિકસિત", main_title: "ફ્યુચરિસ્ટિક યુટિલિટી હબ", main_subtitle: "આધુનિક સમસ્યાઓ માટે નેક્સ્ટ-જનરેશન ટૂલ્સ.",
+                footer_about: "પરિચય", footer_contact: "સંપર્ક", footer_privacy: "ગોપનીયતા", footer_disclaimer: "અસ્વીકૃતિ",
+                footer_copyright: "© ૨૦૨૪ યુટિલિટી હબ. ચિરાગ સાથવારા દ્વારા સર્વાધિકાર સુરક્ષિત.",
+                about_title: "હબ વિશે પરિચય", about_p1: "ફ્યુચરિસ્ટિક યુટિલિટી હબમાં આપનું સ્વાગત છે, જે ચિરાગ સાથવારા દ્વારા એક દ્રષ્ટિકોણ પ્રોજેક્ટ છે. અમારું મિશન અત્યાધુનિક ડિઝાઇનને વ્યવહારુ, રિયલ-ટાઇમ ટૂલ્સ સાથે મર્જ કરવાનું છે, જે કાર્યાત્મક અને દૃષ્ટિની અદભૂત બંને હોય તેવો અનુભવ પ્રદાન કરે છે.", about_p2: "આ પ્લેટફોર્મ પરનું દરેક ટૂલ ચોકસાઈ, ગતિ અને સુલભતાને સુનિશ્ચિત કરવા માટે ચોકસાઇથી બનાવવામાં આવ્યું
